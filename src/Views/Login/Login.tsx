@@ -30,11 +30,13 @@ class Startscreen extends React.Component<IProps, IState> {
     handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         let match = false;
-        this.users.forEach(element => {
-            if (element.email === this.state.email) {
-                match = true
-            }
-        });
+        if (this.users) {
+            this.users.forEach(element => {
+                if (element.email === this.state.email) {
+                    match = true
+                }
+            });
+        }
         if (match) {
             this.props.changeView('List');
         } else {
