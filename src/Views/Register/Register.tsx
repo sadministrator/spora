@@ -57,7 +57,6 @@ class RegisterScreen extends React.Component<IProps, IState> {
     }
 
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log('name: ', event.target.name, '  value: ', event.target.value)
         this.setState({
             ...this.state,
             [event.target.name]: event.target.value
@@ -76,7 +75,7 @@ class RegisterScreen extends React.Component<IProps, IState> {
     render() {
         let imagePreview;
         if(this.state.imagePreviewUrl) {
-            imagePreview = (<img src={this.state.imagePreviewUrl} alt="upload" height="50%" width="50%" />);
+            imagePreview = (<img src={this.state.imagePreviewUrl} alt="uploaded" height="50%" width="50%" />);
         } else {
             imagePreview = (<img src={addProfilePic} alt="logo" height="50%" width="50%" />)
         }

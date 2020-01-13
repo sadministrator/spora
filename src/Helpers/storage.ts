@@ -10,16 +10,23 @@ export const getUsers = () => {
 }
 
 export const pushUser = (user: User) => {
-    let userStack = getUsers();
+    let userStack: User[] = []
+    console.log('getUsers(): ', getUsers())
+    userStack = userStack.concat(getUsers())
+    console.log('concat : ', userStack)
     if (userStack) {
         userStack.push(user);
         localStorage.setItem('userStack', JSON.stringify(userStack))
+    } else {
+        localStorage.setItem('userStack', JSON.stringify(user))
     }
 }
 
 export const popUser = () => {
-    let userStack = getUsers();
+    let userStack: User[] = getUsers();
     if (userStack) {
         return userStack.pop();
+    } else {
+        return null;
     }
 }
