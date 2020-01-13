@@ -13,6 +13,7 @@ interface IState {
 class Startscreen extends React.Component<IProps, IState> {
     state: IState = {email: ''};
     users: string[] = ['marcoTheWebDev@gmail.com', 'jr@gmail.com'];
+    lastUser: string = '';
 
     constructor(props: IProps) {
         super(props);
@@ -21,7 +22,7 @@ class Startscreen extends React.Component<IProps, IState> {
     }
 
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({email: event.target.value})
+        this.setState({email: event.target.value});
     }
 
     handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -38,7 +39,7 @@ class Startscreen extends React.Component<IProps, IState> {
         return (
             <div className="Startscreen">
                 <header className="Startscreen-header">
-                    <img src={questionMark} className="App-logo" alt="logo" height="400" width="400" />
+                    <img src={questionMark} alt="logo" height="50%" width="50%" />
                     <p>
                         Nombre Apellido
                     </p>
