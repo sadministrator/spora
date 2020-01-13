@@ -37,7 +37,7 @@ class List extends React.Component<IProps, IState> {
         })
         return (
             <div className="List">
-                <img src={topUser.imagePreviewUrl} alt="top user" height="50%" width="50%" />
+                <img src={topUser.imagePreviewUrl} alt="top user" height="25%" width="25%" />
                 <p>{topUser.email}</p>
                 <p>{topUser.phone}</p>
                 <p>{topUser.address}</p>

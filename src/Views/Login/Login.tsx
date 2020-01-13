@@ -55,7 +55,7 @@ class Startscreen extends React.Component<IProps, IState> {
                 </div>
             );
         } else {
-            image = (<img src={questionMark} alt="logo" height="50%" width="50%" />)
+            image = (<img src={questionMark} alt="logo" height="25%" width="25%" />)
         }
         return (
             <div className="Login">
