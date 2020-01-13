@@ -30,8 +30,8 @@ class Startscreen extends React.Component<IProps, IState> {
     handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         let match = false;
-        if (this.users) {
-            this.users.forEach(element => {
+        if (this.users) {console.log('users: ', this.users)
+            this.users.forEach(element => {console.log('elem: ', element, "  state: ", this.state)
                 if (element.email === this.state.email) {
                     match = true
                 }
