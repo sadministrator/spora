@@ -1,18 +1,20 @@
 import React from 'react';
-import './Registerscreen.css';
+import './Register.css';
 import addProfilePic from './addProfilePic.png'
 
-interface IProps {}
+interface IProps {
+    changeView: (view: string) => void;
+}
 
 interface IState {
     name: string,
     email: string,
     phone: string,
     address: string,
-    birthdate: string
+    birthdate: string;
 }
 
-class Registerscreen extends React.Component<IProps, IState> {
+class RegisterScreen extends React.Component<IProps, IState> {
     state: IState = {
         name: '',
         email: '',
@@ -42,15 +44,17 @@ class Registerscreen extends React.Component<IProps, IState> {
         if(userStackRaw) {
             userStack.push(JSON.parse(userStackRaw));
             localStorage.setItem('userStack', JSON.stringify(userStack));
+            this.props.changeView('List');
         } else {
             localStorage.setItem('userStack', JSON.stringify(user));
+            this.props.changeView('List');
         }
         
     }
     render() {
         return (
-            <div className="Registerscreen">
-                <header className="Registerscreen-header">
+            <div className="RegisterScreen">
+                <header className="RegisterScreen-header">
                     <img src={addProfilePic} className="App-logo" alt="logo" height="400" width="400" />
                     <p>
                         Nombre Apellido
@@ -69,4 +73,4 @@ class Registerscreen extends React.Component<IProps, IState> {
     }
 }
 
-export default Registerscreen;
+export default RegisterScreen;

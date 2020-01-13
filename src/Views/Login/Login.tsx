@@ -1,12 +1,13 @@
 import React from 'react';
-import './Startscreen.css';
-import questionMark from './questionMark.jpg'
-import RegisterScreen from '../RegisterScreen/RegisterScreen'
+import './Login.css';
+import questionMark from './questionMark.jpg';
 
-interface IProps {}
+interface IProps {
+    changeView: (view: string) => void
+}
 
 interface IState {
-    email: string
+    email: string;
 }
 
 class Startscreen extends React.Component<IProps, IState> {
@@ -27,16 +28,12 @@ class Startscreen extends React.Component<IProps, IState> {
         event.preventDefault();
         this.users.forEach(element => {
             if(element === this.state.email) {
-                console.log('go to userList screen')
+                this.props.changeView('List');
             }
         });
-        console.log('go to register screen')
-        this.render() {
-            return(
-            <RegisterScreen />
-            )
-        };
-    }
+        this.props.changeView('Register')
+    };
+
     render() {
         return (
             <div className="Startscreen">
