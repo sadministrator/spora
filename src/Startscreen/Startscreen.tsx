@@ -1,6 +1,7 @@
 import React from 'react';
 import './Startscreen.css';
 import questionMark from './questionMark.jpg'
+import RegisterScreen from '../RegisterScreen/RegisterScreen'
 
 interface IProps {}
 
@@ -30,6 +31,11 @@ class Startscreen extends React.Component<IProps, IState> {
             }
         });
         console.log('go to register screen')
+        this.render() {
+            return(
+            <RegisterScreen />
+            )
+        };
     }
     render() {
         return (
