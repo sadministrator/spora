@@ -1,6 +1,8 @@
 import React from 'react';
 import './Login.css';
 import questionMark from './questionMark.jpg';
+import * as storage from '../../Helpers/storage';
+import User from '../../Types/User';
 
 interface IProps {
     changeView: (view: string) => void
@@ -11,8 +13,8 @@ interface IState {
 }
 
 class Startscreen extends React.Component<IProps, IState> {
-    state: IState = {email: ''};
-    users: string[] = ['marcoTheWebDev@gmail.com', 'jr@gmail.com'];
+    state: IState = { email: '' };
+    users: User[] = storage.getUsers();
     lastUser: string = '';
 
     constructor(props: IProps) {
@@ -22,32 +24,44 @@ class Startscreen extends React.Component<IProps, IState> {
     }
 
     handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        this.setState({email: event.target.value});
+        this.setState({ email: event.target.value });
     }
 
     handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
+        let match = false;
         this.users.forEach(element => {
-            if(element === this.state.email) {
-                this.props.changeView('List');
+            if (element.email === this.state.email) {
+                match = true
             }
         });
-        this.props.changeView('Register')
+        if (match) {
+            this.props.changeView('List');
+        } else {
+            this.props.changeView('Register')
+        }
     };
 
     render() {
+        let lastUser = storage.popUser();
+        let image;
+        if (lastUser && lastUser.imagePreviewUrl) {
+            image = (
+                <div>
+                    <img src={lastUser.imagePreviewUrl} alt="last user" height="50%" width="50%" />
+                    <p>{lastUser.name}</p>
+                </div>
+            );
+        } else {
+            image = (<img src={questionMark} alt="logo" height="50%" width="50%" />)
+        }
         return (
-            <div className="Startscreen">
-                <header className="Startscreen-header">
-                    <img src={questionMark} alt="logo" height="50%" width="50%" />
-                    <p>
-                        Nombre Apellido
-                    </p>
-                    <form className="Form" onSubmit={this.handleSubmit}>
-                        <input type="text" name="email" placeholder="Email Address" value={this.state.email} onChange={this.handleChange} />
-                        <input type="submit" value="Submit" />
-                    </form>
-                </header>
+            <div className="Login">
+                {image}
+                <form className="Form" onSubmit={this.handleSubmit}>
+                    <input type="text" name="email" placeholder="Email Address" value={this.state.email} onChange={this.handleChange} />
+                    <input type="submit" value="Submit" />
+                </form>
             </div>
         )
     }

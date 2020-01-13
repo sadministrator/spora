@@ -11,9 +11,7 @@ export const getUsers = () => {
 
 export const pushUser = (user: User) => {
     let userStack: User[] = []
-    console.log('getUsers(): ', getUsers())
     userStack = userStack.concat(getUsers())
-    console.log('concat : ', userStack)
     if (userStack) {
         userStack.push(user);
         localStorage.setItem('userStack', JSON.stringify(userStack))

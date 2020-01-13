@@ -40,7 +40,7 @@ class RegisterScreen extends React.Component<IProps, IState> {
         event.preventDefault();
         let reader = new FileReader();
 
-        if(event.target.files && event.target.files[0]) {
+        if (event.target.files && event.target.files[0]) {
             let file = event.target.files[0];
 
             reader.onloadend = () => {
@@ -74,25 +74,23 @@ class RegisterScreen extends React.Component<IProps, IState> {
     }
     render() {
         let imagePreview;
-        if(this.state.imagePreviewUrl) {
+        if (this.state.imagePreviewUrl) {
             imagePreview = (<img src={this.state.imagePreviewUrl} alt="uploaded" height="50%" width="50%" />);
         } else {
             imagePreview = (<img src={addProfilePic} alt="logo" height="50%" width="50%" />)
         }
         return (
-            <div className="RegisterScreen">
-                <header className="RegisterHeader">
-                    {imagePreview}
-                    <form className="Form" onSubmit={this.handleSubmit}>
-                        <input type='file' onChange={this.handleImageChange} />
-                        <input type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.handleChange} />
-                        <input type="text" name="email" placeholder="Email Address" value={this.state.email} onChange={this.handleChange} />
-                        <input type="text" pattern='\d*' name="phone" placeholder="Phone Number" value={this.state.phone} onChange={this.handleChange} />
-                        <input type="text" name="address" placeholder="Address" value={this.state.address} onChange={this.handleChange} />
-                        <input type="text" name="birthdate" placeholder="Date of Birth" value={this.state.birthdate} onChange={this.handleChange} />
-                        <input type="submit" value="Submit" />
-                    </form>
-                </header>
+            <div className="Register">
+                {imagePreview}
+                <form className="Form" onSubmit={this.handleSubmit}>
+                    <input type='file' onChange={this.handleImageChange} />
+                    <input type="text" name="name" placeholder="Name" value={this.state.name} onChange={this.handleChange} />
+                    <input type="text" name="email" placeholder="Email Address" value={this.state.email} onChange={this.handleChange} />
+                    <input type="text" pattern='\d*' name="phone" placeholder="Phone Number" value={this.state.phone} onChange={this.handleChange} />
+                    <input type="text" name="address" placeholder="Address" value={this.state.address} onChange={this.handleChange} />
+                    <input type="text" name="birthdate" placeholder="Date of Birth" value={this.state.birthdate} onChange={this.handleChange} />
+                    <input type="submit" value="Submit" />
+                </form>
             </div>
         )
     }
