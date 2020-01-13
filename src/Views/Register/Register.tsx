@@ -75,9 +75,9 @@ class RegisterScreen extends React.Component<IProps, IState> {
     render() {
         let imagePreview;
         if (this.state.imagePreviewUrl) {
-            imagePreview = (<img src={this.state.imagePreviewUrl} alt="uploaded" height="50%" width="50%" />);
+            imagePreview = (<img src={this.state.imagePreviewUrl} alt="uploaded" height="30%" width="30%" />);
         } else {
-            imagePreview = (<img src={addProfilePic} alt="logo" height="25%" width="25%" />)
+            imagePreview = (<img src={addProfilePic} alt="logo" height="30%" width="30%" />)
         }
         return (
             <div className="Register">

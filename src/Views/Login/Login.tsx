@@ -50,12 +50,12 @@ class Startscreen extends React.Component<IProps, IState> {
         if (lastUser && lastUser.imagePreviewUrl) {
             image = (
                 <div>
-                    <img src={lastUser.imagePreviewUrl} alt="last user" height="50%" width="50%" />
+                    <img src={lastUser.imagePreviewUrl} alt="last user" height="30%" width="30%" />
                     <p>{lastUser.name}</p>
                 </div>
             );
         } else {
-            image = (<img src={questionMark} alt="logo" height="25%" width="25%" />)
+            image = (<img src={questionMark} alt="logo" height="30%" width="30%" />)
         }
         return (
             <div className="Login">
